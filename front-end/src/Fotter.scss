@@ -1,0 +1,94 @@
+/* Footer main container */
+.fotter-main {
+    background-color: hwb(0 96% 4%);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Header styles */
+  .fotter-main header {
+    margin-bottom: 20px;
+  }
+  
+  .fotter-main header h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Main section styles */
+  .fotter-main main {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .account-section-Men,
+  .account-section-women,
+  .account-section-Kids,
+  .account-section-Home--Living,
+  .account-section-Beauty {
+    flex-basis: 20%;
+  }
+  
+  .account-section-Men h2,
+  .account-section-women h2,
+  .account-section-Kids h2,
+  .account-section-Home--Living h2,
+  .account-section-Beauty h2 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .account-section-Men ul,
+  .account-section-women ul,
+  .account-section-Kids ul,
+  .account-section-Home--Living ul,
+  .account-section-Beauty ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .account-section-Men li,
+  .account-section-women li,
+  .account-section-Kids li,
+  .account-section-Home--Living li,
+  .account-section-Beauty li {
+    margin-bottom: 5px;
+  }
+  
+  .account-section-Men li a,
+  .account-section-women li a,
+  .account-section-Kids li a,
+  .account-section-Beauty li a {
+    text-decoration: none;
+    color: #666;
+  }
+  
+  /* Remove underline for Home & Living */
+  .account-section-Home--Living li a {
+    text-decoration: none;
+  }
+  
+  .account-section-Men li a:hover,
+  .account-section-women li a:hover,
+  .account-section-Kids li a:hover,
+  .account-section-Home--Living li a:hover,
+  .account-section-Beauty li a:hover {
+    color: #000;
+  }
+  
+  /* Footer styles */
+  .fotter-main footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+
+  ul {
+    list-style-type: none;
+  }
+  #myntra-app {
+    float: left;
+    
+  }
+  

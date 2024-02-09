@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    background-color: #c0cfea;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: hwb(216 95% 4%);
+}
+
+.category {
+    width: 25%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.category-img {
+    width: 300px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+}
+
+.category p {
+    margin: 10px 0;
+}
+
+.hrx {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.hrx h1 {
+    font-size: 36px;
+    line-height: 48px;
+    color: #003DA5;
+}
+
+
+.m2price {
+    color: #ff6347;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .m2discount {
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #ff6347;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .category:hover{
+    border: 10px solid rgb(236, 139, 204);
+
+
+}
+
+.hero-section{
+    background-image: url(src/assets/images/ti1.jpg);
+    background-size: cover;
+    height: 400px;
+    width: 1500px;
+    
+   
+}
