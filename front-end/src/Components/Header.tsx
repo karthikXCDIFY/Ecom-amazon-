@@ -7,6 +7,9 @@ function Header() {
 function singnin(){
   navigate("/")
 }
+function showCart(){
+  navigate("/cart");
+}
 
   
   return (
@@ -53,7 +56,7 @@ function singnin(){
             <p className="nav-second">Orders</p>
           </div>
           <div className="nav-cart border">
-            <i className="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping" onClick={showCart}></i>
             CART
           </div>
         </div>
