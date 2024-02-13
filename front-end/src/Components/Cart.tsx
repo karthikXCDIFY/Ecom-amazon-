@@ -5,12 +5,20 @@ import "../Cart.scss";
 
 function Cart() {
   const [productData, setProductData] = useState<any>(null);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     const id = extractIdFromLocation(location);
     fetchData(id);
   }, [location]);
+
+  useEffect(() => {
+    if (productData && !isNaN(productData.price)) {
+      setTotalPrice(productData.price * quantity);
+    }
+  }, [quantity, productData]);
 
   const extractIdFromLocation = (location: any) => {
     return location.state ? location.state.id : null;
@@ -30,6 +38,19 @@ function Cart() {
     }
   };
 
+  const handleQuantityChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const newQuantity = parseInt(event.target.value);
+    setQuantity(newQuantity);
+    let price = productData.price.replace("Rs ", "");
+    // console.log(price);
+    // console.log(parseInt(price) + newQuantity);
+    if (productData) {
+      setTotalPrice(parseInt(price) * newQuantity);
+    }
+  };
+
   if (!productData) {
     return <div>Loading...</div>;
   }
@@ -43,9 +64,8 @@ function Cart() {
             <div className="shopping-cart">
               <div className="top">
                 <h1 className="shopping-cart-title">SHOPPING CART</h1>
-                <div className="price-cart   ">
+                <div className="price-cart">
                   <p className="deselect-cart">All Items</p>
-
                   <p className="price-p">Price</p>
                 </div>
               </div>
@@ -62,17 +82,16 @@ function Cart() {
                   <p className="stock">In stock</p>
                   <p className="quantity-cart">
                     Quantity:
-                    <select className="select-cart">
-                      <option>{productData.net_quantity}</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
+                    <select
+                      className="select-cart"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                    >
+                      {[...Array(10).keys()].map((value) => (
+                        <option key={value} value={value + 1}>
+                          {value + 1}
+                        </option>
+                      ))}
                     </select>
                   </p>
                   <p className="SIZE-CART">Size:M</p>
@@ -85,7 +104,9 @@ function Cart() {
             </div>
           )}
         </div>
-        <div className="total-price">Total price(1 Items):{productData.price}</div>
+        <div className="total-price">
+          Total price({quantity} Items): {totalPrice}
+        </div>
       </div>
     </>
   );

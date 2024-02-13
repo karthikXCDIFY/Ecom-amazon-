@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import "../LoginCss.scss";
 import { useNavigate } from "react-router";
+import axiosInstance from "./axiosInstance";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,28 +19,40 @@ function Login() {
     setIsSignUp(false);
   };
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await fetch(isSignUp ? "http://localhost:3000/signup" : "http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        isSignUp
+          ? "http://localhost:3000/signup"
+          : "http://localhost:3000/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
-      if (response.ok) {
-        // Login successful
-        navigate("/home");
+      if (response.status === 200) {
+        console.log("Login successful");
+        // Store the JWT token in local storage
+        localStorage.setItem("token", data.token);
+  
+        // Get the URL from which the user was redirected to the login page
+        const redirectTo = localStorage.getItem("redirectTo") || "/home";
+  
+        // Redirect the user to the previous page or the default page
+        navigate(redirectTo);
       } else {
         // Login failed
         // navigate("/error");
-        alert("please enter valid email AND password")
+        alert("please enter valid email AND password");
         console.log("please enter valid email or password");
         console.error("Login failed:", data.error);
         // Handle error, show error message to user, etc.
@@ -50,6 +62,9 @@ function Login() {
       // Handle network errors or other exceptions
     }
   };
+
+  
+  
 
   return (
     <body className="loginbody">

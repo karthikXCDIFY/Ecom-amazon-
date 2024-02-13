@@ -924,7 +924,7 @@ app.post("/login", async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ user }, jwtKey, { expiresIn: "48h" });
 
-        res.json({ user, token });
+        res.json({ user,auth:token });
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ error: "Something went wrong" });
