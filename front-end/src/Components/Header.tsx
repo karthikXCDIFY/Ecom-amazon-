@@ -12,12 +12,21 @@ function Header() {
     navigate("/"); // Redirect to the login page
   };
 
-
   function singnin() {
     navigate("/");
   }
   function showCart() {
+    console.log("show cart");
     navigate("/cart");
+
+  }
+  function About(){
+    console.log("About");
+    navigate("/about");
+  }
+  function Contact(){
+    console.log("Contact");
+    navigate("/contact");
   }
 
   const PrivateRoute = ({ element }: { element: React.ElementType }) => {
@@ -43,56 +52,44 @@ function Header() {
             </div>
           </div>
           <div className="nav-search">
-            <select className="search-select">
+            {/* <select className="search-select">
               <option>All</option>
-            </select>
+            </select> */}
             <input
               type="search"
               className="search-input"
-              placeholder=" Amazon search"
+              placeholder="Search By Title"
             />
             <div className="search-icon">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
-          <div className="navsigin ">
-            <p>
-              <span className="sign-in border" onClick={handleLogout}>
-                Hello, Logout
-              </span>
-            </p>
-            <p className="nav-second border">Account and lists</p>
-          </div>
+         
           <div className="navorder border">
             <p>
-              <span>Return</span>
+              <span onClick={About}>About Us</span>
             </p>
             {/* <p className="nav-second">Orders</p> */}
           </div>
-          <div className="nav-cart border">
+          {/* <div className="nav-cart border">
             <i className="fa-solid fa-cart-shopping" onClick={showCart}></i>
             Orders
+          </div> */}
+          <div className="nav-cart border" onClick={Contact}>
+           
+            Contact us
           </div>
-        </div>
-        <div className="panel ">
-          <i className="fa-solid fa-bars"></i>
-          <h3 className=" border">All</h3>
-          <div className="panel-options ">
-            <p className=" border">miniTV</p>
-            <p className=" border">Sell</p>
-            <p className=" border"> Best Sellers</p>
-            <p className=" border">Mobil</p>
-            <p className="border">Electronics</p>
-            <p className=" border">Customer service</p>
-            <p className=" border">New Releases</p>
-            <p className=" border">Laptops</p>
-          </div>
-          <div className="panel-deals  border ">
-            <p className=" border">
-              New Launches from Mobils Electrons and more
+          <div className="navsigin ">
+            <p>
+              <span className="sign-in border" onClick={handleLogout}>
+           Logout
+              </span>
             </p>
+            {/* <p className="nav-second border">Account and lists</p> */}
           </div>
+
         </div>
+       
       </header>
     </>
   );

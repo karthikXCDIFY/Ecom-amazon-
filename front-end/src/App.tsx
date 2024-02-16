@@ -54,6 +54,9 @@ import Home from "./Components/Home";
 import SugestedImages from "./Components/SugestedImages";
 import Cart from "./Components/Cart";
 import { ReactNode } from "react"; // Import ReactNode type
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 
 interface PrivateRouteProps {
   element: ReactNode; // Explicitly type the element prop
@@ -78,7 +81,15 @@ function App() {
           path="/suggestedimage"
         />
         <Route element={<PrivateRoute element={<Cart />} />} path="/cart" />
-
+        <Route element={<PrivateRoute element={<About />} />} path="/about" />
+        <Route
+          element={<PrivateRoute element={<Contact />} />}
+          path="/contact"
+        />
+        <Route
+          element={<PrivateRoute element={<PlaceOrder />} />}
+          path="/orders"
+        />
       </Routes>
     </Router>
   );

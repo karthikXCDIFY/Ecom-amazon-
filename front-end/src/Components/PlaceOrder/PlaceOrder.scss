@@ -1,0 +1,70 @@
+.full-place-order{
+    border: 10px solid rgb(222, 195, 195);
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 1.5rem;
+    display: flex;
+  
+}
+
+label{
+     //border: 10px solid rgb(240, 54, 8);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 2vw;
+     width: 600px;
+     
+     margin-left: 25%;
+     margin-right: auto;
+    // display: block;
+ 
+    // justify-items: center;
+}
+input{
+    // display: block;
+    // width: 40%;
+    // height: 50px;
+    display: flex;
+   //border: 10px solid rgb(51, 153, 63);
+   width: 600px;
+   height: 50px;
+   margin-left: 25%;
+   margin-top: 10px;
+   margin-bottom: 10px;
+  
+//    justify-content: center;
+//      align-items: center;
+//      font-size: 2vw;
+}
+.btns-place-order{
+    display: flex;
+    margin-left: 55%;
+    justify-content: center;
+    
+   
+}
+.purchase-button{
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0, 255, 38, 0.978);
+}
+.back-button{
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0, 255, 38, 0.978);
+}
+.shipping{
+    //border: 20px solid rebeccapurple;
+    margin-left: 40%;
+    width: 500px;
+    color: rgb(255, 200, 0);
+}
+.payment{
+    //border: 20px solid rebeccapurple;
+    margin-left: 40%;
+    width: 500px;
+    color: rgb(255, 200, 0);
+}

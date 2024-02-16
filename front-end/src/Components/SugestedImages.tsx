@@ -39,9 +39,15 @@ function SuggestedImages() {
   }
 
   const goToCart = () => {
-    nav("/cart", { state: { id: productData.id } }); // Navigate to Cart component and pass the ID
+    nav("/cart", { state: { id: productData.id , Price:10 ,Size:"m"} }); // Navigate to Cart component and  pass the ID
   };
-
+let finalPrice=() => {
+  let price = productData.price.replace("Rs ", "");
+  let discount = productData.discount.replace("%", "");
+  let r=price-(price*discount/100);
+ 
+  return r;
+}
   return (
     <>
       <Header />
@@ -77,14 +83,14 @@ function SuggestedImages() {
               </div>
               <h3 className="select-size">SELECT SIZE</h3>
               <Size />
-              <p className="price-strikethrough"> {100}</p>
+              <p className="price-strikethrough"> {productData.price}</p>
               <p className="price">
-                {productData.price}{" "}
+                {finalPrice()}{" "}
                 <span className="discount">({productData.discount}% OFF)</span>
               </p>
 
               <button className="add-to-bag" onClick={goToCart}>
-                MOVE TO CART
+                Buy Now
               </button>
             </div>
           </div>

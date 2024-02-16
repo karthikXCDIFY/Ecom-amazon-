@@ -4,7 +4,7 @@
 }
 .product-container {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
    
     // background-color: #ece2de9c;
     width: 100%;
@@ -25,13 +25,13 @@
     width: 70%;
   //   border: 40px solid rgba(70, 61, 52, 0.275);
   }
-  .image-container:hover{
-    border: 40px solid white;
+  // .image-container:hover{
+  //   border: 40px solid white;
 
-  }
+  // }
  .Clothing-Accessories{
   padding-bottom: 4px;
-  color: #888888;
+  color: #ea7617;
 
  }
 

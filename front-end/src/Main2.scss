@@ -3,10 +3,11 @@ body {
 }
 
 .banner {
-    background-color: #c0cfea;
+    background-color: #f08f26;
     color: white;
     padding: 10px;
     text-align: center;
+   
 }
 
 .categories {
@@ -69,7 +70,20 @@ body {
     background-image: url(src/assets/images/ti1.jpg);
     background-size: cover;
     height: 400px;
-    width: 1500px;
+    width: 100%;
     
    
 }
+
+
+  
+  /* Styles for the search bar input */
+  .search input[type="text"] {
+    width: 100%; /* Make the search bar input span the full width of its container */
+    padding: 10px; /* Add padding for better appearance */
+    font-size: 16px; /* Adjust font size */
+    border: 1px solid #ccc; /* Add border for better visibility */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    box-sizing: border-box;
+     margin-top: 50px;
+    margin-bottom: 5px;}

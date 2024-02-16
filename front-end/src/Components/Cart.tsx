@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import "../Cart.scss";
+import Fotter from "./Fotter";
 
 function Cart() {
   const [productData, setProductData] = useState<any>(null);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const location = useLocation();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const id = extractIdFromLocation(location);
     fetchData(id);
+    const price=extractIdFromLocation(location);
   }, [location]);
 
   useEffect(() => {
@@ -54,6 +56,12 @@ function Cart() {
   if (!productData) {
     return <div>Loading...</div>;
   }
+  function placeOrder(){
+   
+   
+    navigate("/orders")
+   
+  }
 
   return (
     <>
@@ -63,7 +71,7 @@ function Cart() {
           {productData && (
             <div className="shopping-cart">
               <div className="top">
-                <h1 className="shopping-cart-title">SHOPPING CART</h1>
+                
                 <div className="price-cart">
                   <p className="deselect-cart">All Items</p>
                   <p className="price-p">Price</p>
@@ -98,7 +106,7 @@ function Cart() {
                   <p className="manu-cart">
                     Manufacturer:{productData.manufacturer}
                   </p>
-                </div>
+                </div >
                 <div className="cart-right">{productData.price}</div>
               </div>
             </div>
@@ -107,6 +115,9 @@ function Cart() {
         <div className="total-price">
           Total price({quantity} Items): {totalPrice}
         </div>
+      </div>
+      <div className="place-order">
+        <button className="place-order-btn" onClick={placeOrder}>Place Order</button>
       </div>
     </>
   );
