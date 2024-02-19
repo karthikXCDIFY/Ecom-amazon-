@@ -2809,3 +2809,140 @@
  *                   type: string
  *                   description: Something went wrong during authentication.
  */
+
+
+
+//purchase and payment
+/**
+ * @swagger
+ * /api/purchase:
+ *   post:
+ *     tags:
+ *       - Purchase
+ *     summary: Handle purchase
+ *     description: Handle the purchase process by inserting shipping details and payment information into the database.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               shippingDetails:
+ *                 type: object
+ *                 properties:
+ *                   firstName:
+ *                     type: string
+ *                     description: The first name of the recipient.
+ *                   lastName:
+ *                     type: string
+ *                     description: The last name of the recipient.
+ *                   street:
+ *                     type: string
+ *                     description: The street address for shipping.
+ *                   city:
+ *                     type: string
+ *                     description: The city for shipping.
+ *                   state:
+ *                     type: string
+ *                     description: The state for shipping.
+ *                   pinCode:
+ *                     type: string
+ *                     description: The pin code for shipping.
+ *               paymentInformation:
+ *                 type: object
+ *                 properties:
+ *                   creditCardNo:
+ *                     type: string
+ *                     description: The credit card number for payment.
+ *                   expiryDate:
+ *                     type: string
+ *                     format: date
+ *                     description: The expiry date of the credit card.
+ *                   ccv:
+ *                     type: string
+ *                     description: The CCV code of the credit card.
+ *     responses:
+ *       200:
+ *         description: Purchase successful
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: Purchase successful
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: Internal server error
+ */
+
+
+//purchase and payment
+/**
+ * @swagger
+ * /api/purchase:
+ *   post:
+ *     tags:
+ *       - Purchase
+ *     summary: Handle purchase
+ *     description: Handle the purchase process by inserting shipping details and payment information into the database.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               shippingDetails:
+ *                 type: object
+ *                 properties:
+ *                   firstName:
+ *                     type: string
+ *                     description: The first name of the recipient.
+ *                   lastName:
+ *                     type: string
+ *                     description: The last name of the recipient.
+ *                   street:
+ *                     type: string
+ *                     description: The street address for shipping.
+ *                   city:
+ *                     type: string
+ *                     description: The city for shipping.
+ *                   state:
+ *                     type: string
+ *                     description: The state for shipping.
+ *                   pinCode:
+ *                     type: string
+ *                     description: The pin code for shipping.
+ *               paymentInformation:
+ *                 type: object
+ *                 properties:
+ *                   creditCardNo:
+ *                     type: string
+ *                     description: The credit card number for payment.
+ *                   expiryDate:
+ *                     type: string
+ *                     format: date
+ *                     description: The expiry date of the credit card.
+ *                   ccv:
+ *                     type: string
+ *                     description: The CCV code of the credit card.
+ *     responses:
+ *       200:
+ *         description: Purchase successful
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: Purchase successful
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: Internal server error
+ */

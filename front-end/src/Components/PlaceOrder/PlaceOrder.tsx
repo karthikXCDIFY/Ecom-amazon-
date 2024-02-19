@@ -1,19 +1,57 @@
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./PlaceOrder.scss";
-import { useNavigate } from "react-router";
 
 function PlaceOrder() {
   const navigate = useNavigate();
 
-  
-  function Purchase(){
-    alert("Purchase Successful");
-    navigate("/home" );
+  async function Purchase() {
+    const formData = {
+      shippingDetails: {
+        firstName: (document.querySelector('input[name="f-name"]') as HTMLInputElement)?.value,
+        lastName: (document.querySelector('input[name="l-name"]') as HTMLInputElement)?.value,
+        street: (document.querySelector('input[name="address"]') as HTMLInputElement)?.value,
+        city: (document.querySelector('input[name="city"]') as HTMLInputElement)?.value,
+        state: (document.querySelector('input[name="state"]') as HTMLInputElement)?.value,
+        pinCode: (document.querySelector('input[name="zip"]') as HTMLInputElement)?.value
+      },
+      paymentInformation: {
+        creditCardNo: (document.querySelector('input[name="card-num"]') as HTMLInputElement)?.value,
+        expiryDate: (document.querySelector('input[name="expire"]') as HTMLInputElement)?.value,
+        ccv: (document.querySelector('input[name="security"]') as HTMLInputElement)?.value
+      }
+    };
+    
+    
+
+    try {
+      const response = await fetch("http://localhost:3000/api/purchase", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Purchase Successful");
+        navigate("/home");
+      } else {
+        const errorMessage = await response.text();
+        alert(`Error: ${errorMessage}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+    }
   }
-  function BackToCart(){
+
+  function BackToCart() {
     alert("back");
-    navigate("/cart");
+    navigate("/home");
   }
+
   return (
     <div className="full-place-order">
       <div className="conta-place-order">
@@ -59,7 +97,7 @@ function PlaceOrder() {
           </div>
           <div className="cc-info-place-order">
             <div>
-              <label>Exp</label>
+              <label>Exp Date</label>
               <input type="text" name="expire" />
             </div>
             <div>
@@ -69,9 +107,11 @@ function PlaceOrder() {
           </div>
         </div>
         <div className="btns-place-order">
-          <button className="purchase-button " onClick={Purchase}>Purchase</button>
+          <button className="purchase-button" onClick={Purchase}>
+            Purchase
+          </button>
           <button className="back-button" onClick={BackToCart}>
-            Back to cart
+            Back
           </button>
         </div>
       </div>

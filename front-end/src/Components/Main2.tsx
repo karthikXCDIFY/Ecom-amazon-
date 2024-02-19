@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect } from "react";
 import "../Main2.scss";
 import { useNavigate } from "react-router-dom";
+import { useSearchContext } from "../Context/SearchContext";
+
 
 interface Category {
   id: string;
@@ -12,15 +15,13 @@ interface Category {
   description: string;
 }
 
-function Main2() {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
+const Main2: React.FC = () => {
+  const { filteredCategories, setFilteredCategories, searchTerm } = useSearchContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [searchTerm]); // Re-fetch data when search term changes
 
   const fetchData = async () => {
     try {
@@ -29,20 +30,14 @@ function Main2() {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      setCategories(data);
-      setFilteredCategories(data); // Set filtered categories initially to all categories
+      // Filter categories based on search term
+      const filtered = data.filter((category: Category) =>
+        category.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCategories(filtered);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-    // Filter categories based on search term
-    const filtered = categories.filter((category) =>
-      category.title.toLowerCase().includes(event.target.value.toLowerCase())
-    );
-    setFilteredCategories(filtered);
   };
 
   const next = (categoryId: string) => {
@@ -51,21 +46,13 @@ function Main2() {
 
   return (
     <>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Search by title"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </div>
       <div>
         <div className="banner">
           <h1>E-commerce Store</h1>
         </div>
         <div className="hero-section"></div>
         <div className="categories">
-          {filteredCategories.map((category) => (
+          {filteredCategories.map((category: Category) => (
             <div className="category" key={category.id}>
               <img
                 onClick={() => next(category.id)}
@@ -87,6 +74,6 @@ function Main2() {
       </div>
     </>
   );
-}
+};
 
 export default Main2;

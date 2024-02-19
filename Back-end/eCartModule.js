@@ -957,3 +957,27 @@ app.post("/signup", async (req, res) => {
         res.status(500).json({ error: "Something went wrong" });
     }
 });
+
+
+//purchase code
+app.post('/api/purchase', async (req, res) => {
+    try {
+        const { shippingDetails, paymentInformation } = req.body;
+
+        if (shippingDetails) {
+            const { firstName, lastName, street, city, state, pinCode } = shippingDetails;
+            await sql.query`INSERT INTO ShippingDetails (FirstName, LastName, Street, City, State, PinCode) VALUES (${firstName}, ${lastName}, ${street}, ${city}, ${state}, ${pinCode})`;
+        }
+
+        if (paymentInformation) {
+            const { creditCardNo, expiryDate, ccv } = paymentInformation;
+            await sql.query`INSERT INTO PaymentInformation (CreditCardNo, ExpiryDate, CCV) VALUES (${creditCardNo}, ${expiryDate}, ${ccv})`;
+        }
+
+        res.status(200).send('Purchase successful');
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Internal server error');
+    }
+});
+
