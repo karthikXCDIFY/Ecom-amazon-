@@ -4,6 +4,7 @@ const sql = require('mssql');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const swaggerJsdoc = require('swagger-jsdoc');
+
 //error
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
@@ -924,7 +925,7 @@ app.post("/login", async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ user }, jwtKey, { expiresIn: "48h" });
 
-        res.json({ user,auth:token });
+        res.json({ user, token });
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ error: "Something went wrong" });
@@ -980,4 +981,8 @@ app.post('/api/purchase', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+
+
+
+
 

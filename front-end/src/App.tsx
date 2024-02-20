@@ -1,5 +1,3 @@
-
-
 import React, { ReactNode } from "react";
 import {
   BrowserRouter as Router,
@@ -15,14 +13,14 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 import { SearchProvider } from "./Context/SearchContext";
- // Import the SearchProvider
+// Import the SearchProvider
 
 interface PrivateRouteProps {
   element: ReactNode;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
-  const isAuthenticated = !!localStorage.getItem("token");
+  const isAuthenticated = !!sessionStorage.getItem("token");
 
   return isAuthenticated ? element : <Navigate to="/" replace />;
 };
@@ -30,7 +28,9 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
 function App() {
   return (
     <Router>
-      <SearchProvider> {/* Wrap your routes with the SearchProvider */}
+      <SearchProvider>
+        {" "}
+        {/* Wrap your routes with the SearchProvider */}
         <Routes>
           <Route element={<Login />} path="/" />
           <Route element={<PrivateRoute element={<Home />} />} path="/home" />

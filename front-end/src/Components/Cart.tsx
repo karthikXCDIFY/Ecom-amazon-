@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import "../Cart.scss";
-import Fotter from "./Fotter";
+ 
 
 function Cart() {
   const [productData, setProductData] = useState<any>(null);

@@ -1,5 +1,5 @@
 import React from "react";
-import "../Contact.scss"; // Make sure this path is correct and Sass is properly configured
+import "../Contact.scss"; 
 import Header from "./Header";
 
 function Contact() {
@@ -11,13 +11,13 @@ function Contact() {
           <h2>Our Contact Details</h2>
           <ul>
             <li>
-              <i className="fas fa-map-marker-alt"></i> Bengaluru 560067
+              <i className="fas fa-map-marker-alt"></i> Ecart Headquarters, Bengaluru 560067
             </li>
             <li>
-              <i className="fas fa-phone"></i> 9864324635
+              <i className="fas fa-phone"></i> Customer Service: 1-800-123
             </li>
             <li>
-              <i className="fas fa-envelope"></i> info@gmail.com
+              <i className="fas fa-envelope"></i> Email: support@ecart.com
             </li>
           </ul>
         </section>
@@ -25,11 +25,15 @@ function Contact() {
           <h2>FAQs</h2>
           <div className="faq">
             <h3>How can I place an order?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>To place an order, simply browse our website, select the desired items, and proceed to checkout. You can also contact our customer service for assistance with placing orders.</p>
           </div>
           <div className="faq">
             <h3>What are your shipping options?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>We offer standard shipping, express shipping, and in-store pickup options. Shipping costs and delivery times may vary depending on the selected option and your location.</p>
+          </div>
+          <div className="faq">
+            <h3>How can I track my order?</h3>
+            <p>Once your order is shipped, you will receive a tracking number via email or SMS. You can use this tracking number to monitor the status of your shipment on our website or through the courier's tracking system.</p>
           </div>
           {/* Add more FAQs as needed */}
         </section>
