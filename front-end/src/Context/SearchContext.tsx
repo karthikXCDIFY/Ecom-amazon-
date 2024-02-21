@@ -16,6 +16,10 @@ interface SearchContextType {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   filteredCategories: Category[];
   setFilteredCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  
+}
+interface SearchProviderProps {
+  children: React.ReactNode; // Specify the type of children
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -28,7 +32,7 @@ export const useSearchContext = (): SearchContextType => {
   return context;
 };
 
-export const SearchProvider: React.FC = ({ children }) => {
+export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
 

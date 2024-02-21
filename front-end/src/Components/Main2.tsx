@@ -30,12 +30,14 @@ const Main2: React.FC = () => {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
+
       // Filter categories based on search term
       const filtered = data.filter((category: Category) =>
         category.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredCategories(filtered);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Error fetching data:", error);
     }
   };
@@ -47,9 +49,9 @@ const Main2: React.FC = () => {
   return (
     <>
       <div>
-        <div className="banner">
+        {/* <div className="banner">
           <h1>E-commerce Store</h1>
-        </div>
+        </div> */}
         <div className="hero-section"></div>
         <div className="categories">
           {filteredCategories.map((category: Category) => (

@@ -1,5 +1,7 @@
 .full-place-order{
-    border: 10px solid rgb(222, 195, 195);
+
+    margin-top: 20px;
+    border: 3px solid rgb(222, 195, 195);
     margin-left: 20%;
     margin-right: 20%;
     border-radius: 1.5rem;
@@ -48,13 +50,16 @@ input{
     margin-right: 20px;
     width: 100px;
     height: 30px;
-    background-color: rgba(0, 255, 38, 0.978);
+    background-color: rgba(240, 161, 107, 0.978);
+    border-radius: 10px;
+    
 }
 .back-button{
     margin-right: 20px;
     width: 100px;
     height: 30px;
-    background-color: rgba(0, 255, 38, 0.978);
+    background-color: rgba(240, 161, 107, 0.978);
+    border-radius: 10px;
 }
 .shipping{
     //border: 20px solid rebeccapurple;

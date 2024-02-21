@@ -45,7 +45,7 @@ function Header() {
           <input
             type="search"
             className="search-input"
-            placeholder="Search By Title"
+            placeholder="Search By Name"
             value={searchTerm}
             onChange={handleSearchChange}
           />

@@ -1,32 +1,40 @@
+
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import "../Cart.scss";
- 
 
 function Cart() {
-  const [productData, setProductData] = useState<any>(null);
+  const [productData, setProductData] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [selectedSize, setSelectedSize] = useState("M"); // Initialize with default size M
   const location = useLocation();
   const navigate = useNavigate();
+
   useEffect(() => {
     const id = extractIdFromLocation(location);
     fetchData(id);
-    const price=extractIdFromLocation(location);
   }, [location]);
 
+ 
   useEffect(() => {
+   // productData.price= productData.price.replace("Rs ", "");
+   //let price = isNaN(.price.replace("Rs ", ""));
     if (productData && !isNaN(productData.price)) {
       setTotalPrice(productData.price * quantity);
+    } else if (productData && isNaN(productData.price)) {
+      console.error("Product price is not valid:", productData.price);
     }
   }, [quantity, productData]);
+  
 
-  const extractIdFromLocation = (location: any) => {
+  const extractIdFromLocation = (location) => {
     return location.state ? location.state.id : null;
   };
 
-  const fetchData = async (id: string | null) => {
+  const fetchData = async (id) => {
     try {
       if (!id) return;
       const response = await fetch(`http://localhost:3000/categories/${id}`);
@@ -35,6 +43,7 @@ function Cart() {
       }
       const data = await response.json();
       setProductData(data);
+      setSelectedSize(location.state.size); // Set selected size from location state
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,15 +61,12 @@ function Cart() {
       setTotalPrice(parseInt(price) * newQuantity);
     }
   };
-
   if (!productData) {
     return <div>Loading...</div>;
   }
-  function placeOrder(){
-   
-   
-    navigate("/orders")
-   
+
+  function placeOrder() {
+    navigate("/orders");
   }
 
   return (
@@ -71,7 +77,6 @@ function Cart() {
           {productData && (
             <div className="shopping-cart">
               <div className="top">
-                
                 <div className="price-cart">
                   <p className="deselect-cart">All Items</p>
                   <p className="price-p">Price</p>
@@ -102,11 +107,11 @@ function Cart() {
                       ))}
                     </select>
                   </p>
-                  <p className="SIZE-CART">Size:M</p>
+                  <p className="SIZE-CART">Size: {selectedSize}</p> {/* Display selected size */}
                   <p className="manu-cart">
                     Manufacturer:{productData.manufacturer}
                   </p>
-                </div >
+                </div>
                 <div className="cart-right">{productData.price}</div>
               </div>
             </div>

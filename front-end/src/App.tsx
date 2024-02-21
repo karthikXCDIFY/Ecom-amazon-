@@ -13,6 +13,7 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 import { SearchProvider } from "./Context/SearchContext";
+import OrderSummary from "./Components/Order Summary/OrderSummary";
 // Import the SearchProvider
 
 interface PrivateRouteProps {
@@ -47,6 +48,10 @@ function App() {
           <Route
             element={<PrivateRoute element={<PlaceOrder />} />}
             path="/orders"
+          />
+          <Route
+            element={<PrivateRoute element={<OrderSummary />} />}
+            path="/orderSummary"
           />
         </Routes>
       </SearchProvider>

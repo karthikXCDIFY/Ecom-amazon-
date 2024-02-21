@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../SuggestedImages.scss";
@@ -7,7 +8,8 @@ import Size from "./Size";
 import Fotter from "./Fotter";
 
 function SuggestedImages() {
-  const [productData, setProductData] = useState<any>(null);
+  const [productData, setProductData] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("M"); // Default size M
   const location = useLocation();
   const nav = useNavigate();
 
@@ -16,11 +18,11 @@ function SuggestedImages() {
     fetchData(id);
   }, [location]);
 
-  const extractIdFromLocation = (location: any) => {
+  const extractIdFromLocation = (location) => {
     return location.state ? location.state.id : null;
   };
 
-  const fetchData = async (id: string | null) => {
+  const fetchData = async (id) => {
     try {
       if (!id) return;
       const response = await fetch(`http://localhost:3000/categories/${id}`);
@@ -39,15 +41,23 @@ function SuggestedImages() {
   }
 
   const goToCart = () => {
-    nav("/cart", { state: { id: productData.id , Price:10 ,Size:"m"} }); // Navigate to Cart component and  pass the ID
+    nav("/cart", {
+      state: { 
+        id: productData.id,
+        price: productData.price,
+        size: selectedSize // Pass selected size to cart page
+      }
+    });
   };
-let finalPrice=() => {
-  let price = productData.price.replace("Rs ", "");
-  let discount = productData.discount.replace("%", "");
-  let r=price-(price*discount/100);
- 
-  return r;
-}
+
+  const finalPrice = () => {
+    let price = productData.price.replace("Rs ", "");
+    let discount = productData.discount.replace("%", "");
+    let r = price - (price * discount) / 100;
+
+    return r;
+  };
+
   return (
     <>
       <Header />
@@ -77,15 +87,14 @@ let finalPrice=() => {
               <div className="descr">{productData.description}</div>
 
               <div>
-                {" "}
                 {productData.customer_reviews}
                 <i className="fa-solid fa-star"></i>
               </div>
               <h3 className="select-size">SELECT SIZE</h3>
-              <Size />
+              <Size setSelectedSize={setSelectedSize} /> {/* Pass setSelectedSize as props */}
               <p className="price-strikethrough"> {productData.price}</p>
               <p className="price">
-                {finalPrice()}{" "}
+              Rs  {finalPrice()}{" "}
                 <span className="discount">({productData.discount}% OFF)</span>
               </p>
 

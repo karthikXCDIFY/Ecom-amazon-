@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./PlaceOrder.scss";
+import Header from "../Header";
 
 function PlaceOrder() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ function PlaceOrder() {
 
       if (response.ok) {
         alert("Purchase Successful");
-        navigate("/home");
+        navigate("/orderSummary");
       } else {
         const errorMessage = await response.text();
         alert(`Error: ${errorMessage}`);
@@ -48,11 +49,13 @@ function PlaceOrder() {
   }
 
   function BackToCart() {
-    alert("back");
+    
     navigate("/home");
   }
 
   return (
+    <>
+    <Header/>
     <div className="full-place-order">
       <div className="conta-place-order">
         <h1 className="shipping">
@@ -116,6 +119,7 @@ function PlaceOrder() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
