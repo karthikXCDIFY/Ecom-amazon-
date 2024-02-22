@@ -14,6 +14,7 @@ import Contact from "./Components/Contact";
 import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 import { SearchProvider } from "./Context/SearchContext";
 import OrderSummary from "./Components/Order Summary/OrderSummary";
+
 // Import the SearchProvider
 
 interface PrivateRouteProps {
@@ -37,21 +38,24 @@ function App() {
           <Route element={<PrivateRoute element={<Home />} />} path="/home" />
           <Route
             element={<PrivateRoute element={<SugestedImages />} />}
-            path="/suggestedimage"
+            path="/suggestedimage/:id"
           />
-          <Route element={<PrivateRoute element={<Cart />} />} path="/cart" />
+          {/* <Route element={<PrivateRoute element={<Cart />} />} path="/cart" /> */}
+
+          <Route element={<PrivateRoute element={<Cart />} />} path="/cart/:id" />
           <Route element={<PrivateRoute element={<About />} />} path="/about" />
           <Route
             element={<PrivateRoute element={<Contact />} />}
             path="/contact"
           />
+
           <Route
             element={<PrivateRoute element={<PlaceOrder />} />}
-            path="/orders"
+            path="/placeorders/:id"
           />
           <Route
             element={<PrivateRoute element={<OrderSummary />} />}
-            path="/orderSummary"
+            path="/ordersummary/:id"
           />
         </Routes>
       </SearchProvider>

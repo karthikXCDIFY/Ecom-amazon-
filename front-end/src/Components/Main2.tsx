@@ -1,9 +1,7 @@
-
 import React, { useEffect } from "react";
 import "../Main2.scss";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSearchContext } from "../Context/SearchContext";
-
 
 interface Category {
   id: string;
@@ -16,7 +14,8 @@ interface Category {
 }
 
 const Main2: React.FC = () => {
-  const { filteredCategories, setFilteredCategories, searchTerm } = useSearchContext();
+  const { filteredCategories, setFilteredCategories, searchTerm } =
+    useSearchContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,14 +35,14 @@ const Main2: React.FC = () => {
         category.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredCategories(filtered);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   const next = (categoryId: string) => {
-    navigate("/suggestedimage", { replace: true, state: { id: categoryId } });
+    // navigate("/suggestedimage", { replace: true, state: { id: categoryId } });
+    navigate(`/suggestedimage/${categoryId}`, { replace: true });
   };
 
   return (
@@ -56,12 +55,18 @@ const Main2: React.FC = () => {
         <div className="categories">
           {filteredCategories.map((category: Category) => (
             <div className="category" key={category.id}>
-              <img
-                onClick={() => next(category.id)}
-                className="category-img"
-                src={category.image_url}
-                alt={category.alt}
-              />
+              <div className="image-and-button">
+                <img
+                  onClick={() => next(category.id)}
+                  className="category-img"
+                  src={category.image_url}
+                  alt={category.alt}
+                />
+                <NavLink to={`/placeorders/${category.id}`}>
+                  <button className="buynow"> Buy Now</button>
+                </NavLink>
+              </div>
+
               <div>
                 {category.title}
                 <p className="m2price">

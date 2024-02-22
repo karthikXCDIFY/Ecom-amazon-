@@ -1,9 +1,10 @@
-
 import React from "react";
 import "../Header.scss";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "../Context/SearchContext";
-
+import { AccessAlarm, ThreeDRotation } from "@mui/icons-material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 function Header() {
   const { searchTerm, setSearchTerm } = useSearchContext();
@@ -37,7 +38,8 @@ function Header() {
         <div className="navaddress border">
           <p className="address-first">Delivering to Bengaluru 560067</p>
           <div className="add-icon">
-            <i className="fa-solid fa-location-dot"></i>
+            
+            <LocationOnIcon />
             <p className="address-second"> India</p>
           </div>
         </div>
@@ -50,7 +52,8 @@ function Header() {
             onChange={handleSearchChange}
           />
           <div className="search-icon">
-            <i className="fa-solid fa-magnifying-glass"></i>
+            {/* <i className="fa-solid fa-magnifying-glass"></i> */}
+            <SearchOutlinedIcon />  
           </div>
         </div>
 

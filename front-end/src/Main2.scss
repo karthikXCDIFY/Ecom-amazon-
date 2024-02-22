@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    flex:1;
 }
 
 .banner {
@@ -24,16 +25,70 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
+.image-and-button{
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.image-and-button::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    width: 300px;
+    background-image: linear-gradient(to top, rgb(112, 94, 246), rgba(4, 151, 177, 0));
+    height: 200px;
+    z-index: 500;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
 
 .category-img {
     width: 300px; /* Set a fixed width */
     height: 300px; /* Set a fixed height */
     object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+    border: 0.1px solid rgb(130, 72, 184);
 }
+
+
+.buynow{
+    position: absolute;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+    color: white;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #e9a110;
+    margin-bottom: 30%;
+    cursor: pointer;
+    transition: ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    z-index: 999;
+}
+
+.image-and-button:hover  .buynow {
+    opacity: 1;
+}
+
+
 
 .category p {
     margin: 10px 0;
 }
+
 
 .hrx {
     margin-top: 50px;
@@ -61,13 +116,7 @@ body {
     margin-left: 0.5rem;
   }
 
-  .category-img:hover{
-    border: 5px solid rgb(227, 117, 80);
-    z-index: 1000;
-
-
-}
-
+ 
 .hero-section{
     background-image: url(src/assets/images/ti1.jpg);
     background-size: cover;
