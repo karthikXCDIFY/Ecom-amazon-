@@ -5,7 +5,7 @@ import Header from "./Header";
 function Contact() {
   return (
     <>
-      <Header />
+    
       <main>
         <section className="contact-details">
           <h2>Our Contact Details</h2>

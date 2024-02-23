@@ -14,6 +14,7 @@ import Contact from "./Components/Contact";
 import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 import { SearchProvider } from "./Context/SearchContext";
 import OrderSummary from "./Components/Order Summary/OrderSummary";
+import Layout from "./Components/Layout/layOut";
 
 // Import the SearchProvider
 
@@ -29,8 +30,10 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
 
 function App() {
   return (
+    
     <Router>
       <SearchProvider>
+        <Layout>
         {" "}
         {/* Wrap your routes with the SearchProvider */}
         <Routes>
@@ -42,7 +45,7 @@ function App() {
           />
           {/* <Route element={<PrivateRoute element={<Cart />} />} path="/cart" /> */}
 
-          <Route element={<PrivateRoute element={<Cart />} />} path="/cart/:id" />
+          <Route element={<PrivateRoute element={<Cart />} />} path="/cart/:id/:selected" />
           <Route element={<PrivateRoute element={<About />} />} path="/about" />
           <Route
             element={<PrivateRoute element={<Contact />} />}
@@ -58,7 +61,9 @@ function App() {
             path="/ordersummary/:id"
           />
         </Routes>
+        </Layout>
       </SearchProvider>
+      
     </Router>
   );
 }

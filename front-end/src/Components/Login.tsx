@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import "../LoginCss.scss";
 import { useNavigate } from "react-router";
@@ -10,6 +12,10 @@ function Login() {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleSignUpClick = () => {
     setIsSignUp(true);
@@ -19,12 +25,43 @@ function Login() {
     setIsSignUp(false);
   };
 
-  const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Validate input
+    validateInput(name, value);
   };
 
-  const handleSubmit = async (e: any) => {
+  const validateInput = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "email":
+        error = value ? "" : "Email is required";
+        break;
+      case "password":
+        error = value ? "" : "Password is required";
+        break;
+      default:
+        break;
+    }
+    setErrors((prevState) => ({
+      ...prevState,
+      [name]: error,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check for empty fields
+    for (const field in formData) {
+      if (!formData[field]) {
+        setErrors((prevState) => ({
+          ...prevState,
+          [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required`,
+        }));
+        return;
+      }
+    }
     try {
       const response = await fetch(
         isSignUp
@@ -41,25 +78,15 @@ function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log("Login successful");
-        // Store the JWT token in local storage
         sessionStorage.setItem("token", data.token);
-
-        // Get the URL from which the user was redirected to the login page
         const redirectTo = sessionStorage.getItem("redirectTo") || "/home";
-
-        // Redirect the user to the previous page or the default page
         navigate(redirectTo);
       } else {
-        // Login failed
-        // navigate("/error");
-        alert("please enter valid email AND password");
-        console.log("please enter valid email or password");
+        alert("Please enter valid email and password");
         console.error("Login failed:", data.error);
-        // Handle error, show error message to user, etc.
       }
     } catch (error) {
       console.error("Error:", error);
-      // Handle network errors or other exceptions
     }
   };
 
@@ -81,6 +108,7 @@ function Login() {
               value={formData.email}
               onChange={handleChange}
             />
+            {errors.email && <div className="error">{errors.email}</div>}
             <input
               type="password"
               name="password"
@@ -88,6 +116,7 @@ function Login() {
               value={formData.password}
               onChange={handleChange}
             />
+            {errors.password && <div className="error">{errors.password}</div>}
             {isSignUp ? (
               <button type="submit">Sign Up</button>
             ) : (

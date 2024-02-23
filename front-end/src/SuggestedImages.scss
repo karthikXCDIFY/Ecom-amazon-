@@ -14,12 +14,23 @@
 
   }
   
-  
+  .Sugested-banner{
+    margin-top: 15px;
+    background-color: #fa8b58;
+   font-size: 50px;
+   font-weight: bolder;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   color: white;
+    margin-bottom: 5px;
+  }
   .image-container{
     
     height: 500px;
   
-    margin-top: 80px;
+    
    
    
     width: 70%;
@@ -58,28 +69,22 @@
 
   
   .product-details{
-    // background-color: #888;
-    // display: block;
-    // height: 20px;
-    // width: 20px;
-    // border: #888 solid;
+    
     
     display: inline-block;
-    padding: 50px;
+    //padding: 50px;
     
     font-size: 20px;
     font-weight: bold;
   
-    margin-top: 80px;
+    //margin-top: 80px;
     height: 500px;
     border-radius: 0.8rem;
     width: 30%;
    // border:30px #888 solid;
     
     }
-    // .product-details:hover{
-    //  // border:40px #888888 solid;
-    // }
+    
 
   
   .product-card h2 {
@@ -111,7 +116,7 @@
     display: block;
     width: 100%;
     padding: 0.5rem;
-    background-color: #ff6347;
+    background-color: #003DA5;
     color: #fff;
     border: none;
     border-radius: 0.9rem;

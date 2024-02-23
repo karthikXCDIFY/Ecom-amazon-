@@ -1,0 +1,104 @@
+.Order-Summary-Container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Order-Summary-Container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .Order-Summary-Container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .Order-Summary-Container img:hover {
+    transform: scale(1.07);
+  }
+  
+  .Order-Summary-productInformation {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Order-Summary-productInformation h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .Order-Summary-productInformation p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .Order-Summary-productInformation p.title {
+    font-weight: bold;
+  }
+  
+  .Order-Summary-shiping-details,
+  .Order-Summary-payment-information {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Order-Summary-shiping-details h2,
+  .Order-Summary-payment-information h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .Order-Summary-shiping-details p,
+  .Order-Summary-payment-information p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  @media (max-width: 600px) {
+    .Order-Summary-Container {
+      padding: 15px;
+    }
+    
+    .Order-Summary-Container h1 {
+      font-size: 28px;
+    }
+  
+    .Order-Summary-productInformation h1 {
+      font-size: 20px;
+    }
+  
+    .Order-Summary-productInformation p {
+      font-size: 14px;
+    }
+  
+    .Order-Summary-shiping-details h2,
+    .Order-Summary-payment-information h2 {
+      font-size: 20px;
+    }
+  
+    .Order-Summary-shiping-details p,
+    .Order-Summary-payment-information p {
+      font-size: 12px;
+    }
+  }
+  

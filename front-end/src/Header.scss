@@ -40,15 +40,18 @@
   display: flex;
   align-items: center;
 }
+.navaddress{
+display: flex;
+//border: 9px solid red;
+//width: 10%;
+justify-content: center;
 
-.address-first{
-  font-size: 0.8rem;
-  color: whitesmoke;
 }
 
-.address-second{
-  font-size: 1rem;
+.Header-home{
+padding-left: 5%;
 }
+
 
 .nav-search{
   flex: 1;
@@ -107,9 +110,5 @@ span{
   display: flex;
   font-size: small;
 }
-// .navsigin{
-//   border: 20px solid rgb(255, 0, 47);
-//   margin-right: 200px;
-// }
 
 

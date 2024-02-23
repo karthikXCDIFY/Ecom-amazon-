@@ -142,7 +142,7 @@ function PlaceOrder() {
 
   return (
     <>
-      <Header />
+      
       <div className="full-place-order">
         <div className="conta-place-order">
           <h1 className="shipping">

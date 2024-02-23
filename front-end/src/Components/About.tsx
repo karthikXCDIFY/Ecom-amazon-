@@ -5,13 +5,13 @@ import Header from "./Header";
 function About() {
   return (
     <>
-      <body>
-        <header>
+      <body className="about-page">
+        <header className="header-about">
           <h1>About Us</h1>
         </header>
 
         <div className="container">
-          <section id="company">
+          <section className="about-section" id="company">
             <h2>Our Company</h2>
             <p>
               Ecart is a leading e-commerce company specializing in providing a
@@ -21,7 +21,7 @@ function About() {
             </p>
           </section>
 
-          <section id="team">
+          <section className="about-section" id="team">
             <h2>Our Team</h2>
             <p>
               Our team at Ecart comprises dedicated professionals from diverse
@@ -31,7 +31,7 @@ function About() {
             </p>
           </section>
 
-          <section id="mission">
+          <section className="about-section" id="mission">
             <h2>Our Mission</h2>
             <p>
               At Ecart, our mission is to empower customers by providing them
@@ -42,7 +42,7 @@ function About() {
             </p>
           </section>
 
-          <section id="history">
+          <section className="about-section" id="history">
             <h2>Our History</h2>
             <p>
               Founded in 20XX, Ecart started as a small e-commerce platform with
@@ -53,7 +53,7 @@ function About() {
             </p>
           </section>
 
-          <section id="vision">
+          <section className="about-section" id="vision">
             <h2>Our Vision</h2>
             <p>
               Our vision at Ecart is to become the preferred choice for online

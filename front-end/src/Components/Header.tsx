@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "../Context/SearchContext";
 import { AccessAlarm, ThreeDRotation } from "@mui/icons-material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 function Header() {
   const { searchTerm, setSearchTerm } = useSearchContext();
@@ -28,20 +29,25 @@ function Header() {
   const Contact = () => {
     navigate("/contact");
   };
+  function home() {
+    navigate("/home");
+  }
 
   return (
     <header>
       <div className="navbar">
-        <div className="navlogo border">
+        <div className="navlogo border" >
           <div className="logo"></div>
         </div>
-        <div className="navaddress border">
-          <p className="address-first">Delivering to Bengaluru 560067</p>
-          <div className="add-icon">
-            
+        <div className="navaddress border" onClick={home}>
+          <p>
+            <HomeOutlinedIcon />
+          </p>
+          <p className="Header-home">Home</p>
+          {/* <div className="add-icon">
             <LocationOnIcon />
             <p className="address-second"> India</p>
-          </div>
+          </div> */}
         </div>
         <div className="nav-search">
           <input
@@ -53,7 +59,7 @@ function Header() {
           />
           <div className="search-icon">
             {/* <i className="fa-solid fa-magnifying-glass"></i> */}
-            <SearchOutlinedIcon />  
+            <SearchOutlinedIcon />
           </div>
         </div>
 
