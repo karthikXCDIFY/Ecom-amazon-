@@ -1,10 +1,8 @@
 
-
 import React, { useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import "./PlaceOrder.scss";
 import Header from "../Header";
-
 
 function PlaceOrder() {
   const navigate = useNavigate();
@@ -56,10 +54,16 @@ function PlaceOrder() {
         error = value ? "" : "This field is required";
         break;
       case "pinCode":
-        error = value && /^[0-9]{6}$/.test(value) ? "" : "Please enter a valid pin code";
+        error =
+          value && /^[0-9]{6}$/.test(value)
+            ? ""
+            : "Please enter a valid pin code";
         break;
       case "creditCardNo":
-        error = value && /^[0-9]{16}$/.test(value) ? "" : "Please enter a valid credit card number";
+        error =
+          value && /^[0-9]{16}$/.test(value)
+            ? ""
+            : "Please enter a valid credit card number";
         break;
       case "expiryDate":
         error =
@@ -68,7 +72,8 @@ function PlaceOrder() {
             : "Please enter a valid expiry date (MM/YY)";
         break;
       case "ccv":
-        error = value && /^[0-9]{3}$/.test(value) ? "" : "Please enter a valid CCV";
+        error =
+          value && /^[0-9]{3}$/.test(value) ? "" : "Please enter a valid CCV";
         break;
       default:
         break;
@@ -125,7 +130,7 @@ function PlaceOrder() {
 
       if (response.ok) {
         console.log("Purchase Successful");
-         navigate(`/orderSummary/${id}`);
+        navigate(`/orderSummary/${id}`);
       } else {
         const errorMessage = await response.text();
         alert(`Error: ${errorMessage}`);
@@ -142,9 +147,8 @@ function PlaceOrder() {
 
   return (
     <>
-      
       <div className="full-place-order">
-        <div className="conta-place-order">
+        <div className="only-address">
           <h1 className="shipping">
             <i className="fas fa-shipping-fast"></i>
             Shipping Details
@@ -225,7 +229,9 @@ function PlaceOrder() {
                 )}
               </div>
             </div>
-
+          </div>
+          </div>
+          <div className="only-payment">
             <h1 className="payment">
               <i className="far fa-credit-card"></i> Payment Information
             </h1>
@@ -238,7 +244,9 @@ function PlaceOrder() {
                 onChange={handleInputChange}
               />
               {errors.paymentInformation.creditCardNo && (
-                <div className="error">{errors.paymentInformation.creditCardNo}</div>
+                <div className="error">
+                  {errors.paymentInformation.creditCardNo}
+                </div>
               )}
             </div>
             <div className="cc-info-place-order">
@@ -251,7 +259,9 @@ function PlaceOrder() {
                   onChange={handleInputChange}
                 />
                 {errors.paymentInformation.expiryDate && (
-                  <div className="error">{errors.paymentInformation.expiryDate}</div>
+                  <div className="error">
+                    {errors.paymentInformation.expiryDate}
+                  </div>
                 )}
               </div>
               <div>
@@ -268,15 +278,18 @@ function PlaceOrder() {
               </div>
             </div>
           </div>
-          <div className="btns-place-order">
-            <button className="purchase-button" onClick={Purchase}>
-              Purchase
-            </button>
-            <button className="back-button" onClick={BackToCart}>
-              Back
-            </button>
-          </div>
-        </div>
+        
+      </div>
+
+
+
+      <div className="btns-place-order">
+        <button className="purchase-button" onClick={Purchase}>
+          Purchase
+        </button>
+        <button className="back-button" onClick={BackToCart}>
+          Back
+        </button>
       </div>
     </>
   );

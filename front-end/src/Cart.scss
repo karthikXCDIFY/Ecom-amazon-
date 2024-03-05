@@ -4,12 +4,25 @@
     font-family: Arial, Helvetica, sans-serif;
     font-style: unset;
 }
+.cart-banner{
+    margin-top: 20px;
+    background-color: #f08542;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    font-family: fantasy;
+    font-style: oblique;
+ 
+}
 
 .shopping-cart-title{
     font-style: oblique;
 }
 .shopping-cart{
-    margin-top: 60px;
+    margin-top: 20px;
    border-bottom: 5px solid wheat;
    
 }
@@ -41,6 +54,13 @@ height: 263px;
     padding-bottom: 20px;
     
 }
+.delete{
+    padding-left: 10%;
+    color: rgb(15, 137, 231);
+    padding-top: 10px;
+    font-size: larger;
+    padding-bottom: 20px;
+}
 .product-card-cart{
   
     //border: 10px solid rebeccapurple;
@@ -51,17 +71,24 @@ height: 263px;
 .cart-midle{
 
     //border: 10px solid rgb(153, 51, 51);
-    width: 60%;
+    width: 50%;
     
 }
 .cart-right{
  //border: 10px solid rgb(153, 51, 51);
    display: flex;
    align-items: center;
-padding-left: 16.5%;
-width: 40%;
+   justify-content: center;
+padding-right: 5%;
+//width: 40%;
 }
-
+.delete-btn{
+    border: 2px solid transparent;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 400%;
+    margin-left: 90%;
+}
 
 .stock{
     color: rgb(10, 217, 48);
@@ -119,3 +146,8 @@ width: 40%;
 
 }
 
+// .space{
+//     color: #003DA5;
+//     display: block;
+//     border: 2px solid red;
+// }
