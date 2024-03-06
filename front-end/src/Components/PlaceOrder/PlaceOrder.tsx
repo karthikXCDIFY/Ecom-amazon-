@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import "./PlaceOrder.scss";
@@ -230,58 +229,55 @@ function PlaceOrder() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="only-payment">
+          <h1 className="payment">
+            <i className="far fa-credit-card"></i> Payment Information
+          </h1>
+          <div className="cc-num-place-order">
+            <label>Credit Card No.</label>
+            <input
+              type="text"
+              name="paymentInformation-creditCardNo"
+              value={formData.paymentInformation.creditCardNo}
+              onChange={handleInputChange}
+            />
+            {errors.paymentInformation.creditCardNo && (
+              <div className="error">
+                {errors.paymentInformation.creditCardNo}
+              </div>
+            )}
           </div>
-          <div className="only-payment">
-            <h1 className="payment">
-              <i className="far fa-credit-card"></i> Payment Information
-            </h1>
-            <div className="cc-num-place-order">
-              <label>Credit Card No.</label>
+          <div className="cc-info-place-order">
+            <div>
+              <label>Exp Date</label>
               <input
                 type="text"
-                name="paymentInformation-creditCardNo"
-                value={formData.paymentInformation.creditCardNo}
+                name="paymentInformation-expiryDate"
+                value={formData.paymentInformation.expiryDate}
                 onChange={handleInputChange}
               />
-              {errors.paymentInformation.creditCardNo && (
+              {errors.paymentInformation.expiryDate && (
                 <div className="error">
-                  {errors.paymentInformation.creditCardNo}
+                  {errors.paymentInformation.expiryDate}
                 </div>
               )}
             </div>
-            <div className="cc-info-place-order">
-              <div>
-                <label>Exp Date</label>
-                <input
-                  type="text"
-                  name="paymentInformation-expiryDate"
-                  value={formData.paymentInformation.expiryDate}
-                  onChange={handleInputChange}
-                />
-                {errors.paymentInformation.expiryDate && (
-                  <div className="error">
-                    {errors.paymentInformation.expiryDate}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label>CCV</label>
-                <input
-                  type="text"
-                  name="paymentInformation-ccv"
-                  value={formData.paymentInformation.ccv}
-                  onChange={handleInputChange}
-                />
-                {errors.paymentInformation.ccv && (
-                  <div className="error">{errors.paymentInformation.ccv}</div>
-                )}
-              </div>
+            <div>
+              <label>CCV</label>
+              <input
+                type="text"
+                name="paymentInformation-ccv"
+                value={formData.paymentInformation.ccv}
+                onChange={handleInputChange}
+              />
+              {errors.paymentInformation.ccv && (
+                <div className="error">{errors.paymentInformation.ccv}</div>
+              )}
             </div>
           </div>
-        
+        </div>
       </div>
-
-
 
       <div className="btns-place-order">
         <button className="purchase-button" onClick={Purchase}>
